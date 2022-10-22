@@ -13,7 +13,7 @@
 
 
 - has_many :items
-- has_one  :buy
+- has_one  :buys
 
 # items テーブル
  
@@ -22,10 +22,10 @@
 | name               | string     | null: false                    |
 | explanation        | text       | null: false                    |
 | category_id        | integer    | null: false                    |
-| condition          | string     | null: false                    |
-| delivery_charge    | integer    | null: false                    |
+| condition_id       | integer    | null: false                    |
+| delivery_charge_id | integer    | null: false                    |
 | prefecture_id      | integer    | null: false                    |
-| sending_date       | date       | null: false                    |
+| sending_date_id    | integer    | null: false                    |
 | price              | integer    | null: false                    |
 | user               | references | null: false, foreign_key: true |
 
@@ -42,7 +42,7 @@
 - belongs_to :user
 - belongs_to :item
 - has_one    :address
-# address テーブル
+# addresses テーブル
 
 | Column             | Type       | Options                        |
 | ------------------ | ------     | -----------                    |
