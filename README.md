@@ -13,7 +13,7 @@
 
 
 - has_many :items
-- has_one  :buys
+- has_many  :buys
 
 # items テーブル
  
