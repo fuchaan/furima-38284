@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all.order(created_at: 'DESC')
+    @buy = Buy.where(item_id: params[:item_id])
   end
 
   def new
@@ -51,6 +52,8 @@ class ItemsController < ApplicationController
   end
 
   def move_to_index
-    redirect_to action: :index unless current_user.id == @item.user.id
+    if current_user.id != @item.user.id || Buy.where(item_id: @item.id).present?
+    redirect_to action: :index 
+    end
   end
 end
