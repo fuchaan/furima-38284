@@ -5,7 +5,6 @@ const pay = () => {
     e.preventDefault();
     const formResult = document.getElementById("charge-form");
     const formData = new FormData(formResult);
-
     const card = {
       number: formData.get("order[number]"),
       cvc: formData.get("order[cvc]"),
@@ -23,10 +22,8 @@ const pay = () => {
       document.getElementById("card-cvc").removeAttribute("name");
       document.getElementById("card-exp-month").removeAttribute("name");
       document.getElementById("card-exp-year").removeAttribute("name");
-
       document.getElementById("charge-form").submit();
     });
   });
 };
-
 window.addEventListener("load", pay);
