@@ -25,7 +25,7 @@ RSpec.describe Order, type: :model do
     it '郵便番号は、「３桁ハイフン４桁」の半角文字列のみ保存可能なこと' do
       @order.post_code = '1234567'
       @order.valid?
-      expect(@order.errors.full_messages).to include('Post code is invalid')
+      expect(@order.errors.full_messages).to include('Post code is invalid. Enter it as follows (e.g. 123-4567)')
     end
     it '都道府県が必須であること' do
       @order.prefecture_id = '1'
@@ -50,12 +50,12 @@ RSpec.describe Order, type: :model do
     it '電話番号が10桁以上であること' do
       @order.phone = '090123456'
       @order.valid?
-      expect(@order.errors.full_messages).to include('Phone is invalid')
+      expect(@order.errors.full_messages).to include('Phone number is too short')
     end
     it '電話番号が11桁以下であること' do
       @order.phone = '090123456789'
       @order.valid?
-      expect(@order.errors.full_messages).to include('Phone is invalid')
+      expect(@order.errors.full_messages).to include('Phone number is too short')
     end
   end
 end
