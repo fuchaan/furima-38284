@@ -1,4 +1,6 @@
 class Address < ApplicationRecord
+  # attr_accessor :token
+  # validates :token, presence: true
   # validates :post_code,      presence: true
   # validates :prefecture_id,  presence: true
   # validates :municipalities, presence: true

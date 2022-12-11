@@ -19,5 +19,5 @@ class User < ApplicationRecord
   validates :password, format: { with: VALID_PASSWORD_REGEX, message: 'is invalid. Include both letters and numbers' }
 
   has_many :items
-  # has_many :buys
+  has_many :buys
 end
