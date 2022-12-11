@@ -1,13 +1,14 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index]
-  before_action :move_to_root, only: [:index]
   before_action :item_find_params, only: [:index, :create]
+  before_action :move_to_root, only: [:index]
 
   def index
     @order = Order.new
   end
 
   def create
+    binding.pry
     @order = Order.new(order_params)
     if @order.valid?
       pay_item
@@ -40,10 +41,8 @@ class OrdersController < ApplicationController
   end
 
   def move_to_root
-    if Buy.where(item_id: params[:item_id]).present? && current_user.id != Item.find(params[:item_id]).user_id
-      redirect_to root_path
-    elsif current_user.id == Item.find(params[:item_id]).user_id
-      redirect_to root_path
-    end
+    return unless Buy.where(item_id: @item.id).present? && current_user.id != @item.user_id || current_user.id == @item.user_id
+
+    redirect_to root_path
   end
 end

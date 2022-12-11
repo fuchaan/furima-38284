@@ -5,7 +5,6 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all.order(created_at: 'DESC')
-    @buy = Buy.where(item_id: params[:item_id])
   end
 
   def new

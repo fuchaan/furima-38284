@@ -5,6 +5,7 @@ FactoryBot.define do
     prefecture_id { 2 }
     municipalities { '横浜市緑区' }
     address { '青山1-1-1' }
+    building { '柳ビル103' }
     phone { '09012345678' }
   end
 end
