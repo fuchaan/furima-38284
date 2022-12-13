@@ -8,7 +8,6 @@ class OrdersController < ApplicationController
   end
 
   def create
-    binding.pry
     @order = Order.new(order_params)
     if @order.valid?
       pay_item
@@ -42,7 +41,6 @@ class OrdersController < ApplicationController
 
   def move_to_root
     return unless Buy.where(item_id: @item.id).present? && current_user.id != @item.user_id || current_user.id == @item.user_id
-
     redirect_to root_path
   end
 end
