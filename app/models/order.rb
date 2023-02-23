@@ -6,13 +6,13 @@ class Order
     validates :user_id
     validates :item_id
     validates :token
-    validates :post_code, format: { with: /\A\d{3}-\d{4}\z/, message: 'is invalid. Enter it as follows (e.g. 123-4567)' }
-    validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank" }
+    validates :post_code, format: { with: /\A\d{3}-\d{4}\z/, message: 'は無効です。次のように入力してください (例: 123-4567)' }
+    validates :prefecture_id, numericality: { other_than: 1, message: "を入力してください" }
     validates :municipalities
     validates :address
-    validates :phone, format: { with: /\A[0-9]+\z/, message: 'is invalid. Input only number' }
-    validates :phone, format: { with: /\A\d{10,11}\z/, message: 'number is too short' }
+    validates :phone, format: { with: /\A[0-9]+\z/, message: 'は無効です。半角数字で入力してください' }
   end
+  validates :phone, format: { with: /\A\d{10,11}\z/, message: '番号が短いです。正しく入力してください' }
 
   def save
     buy = Buy.create(user_id: user_id, item_id: item_id)
